@@ -1,6 +1,6 @@
 #!/usr/bin/env NODE_OPTIONS=--no-warnings node
 
-import { Command } from 'commander';
+import { Command } from '@commander-js/extra-typings';
 import { LIB_VERSION, LIB_NAME } from './lib.ts';
 import { animate_webp } from './animate_webp.ts';
 
@@ -24,7 +24,10 @@ program
   .helpOption("--help", `display help for ${LIB_NAME}`)
   .version(LIB_VERSION)
   .action((files, options) => {
-    animate_webp(files, options.output, options.verbose, options.frameDelay, options.quality, options.width, options.height);
+    const wid = options.width ? +options.width : undefined;
+    const hei = options.height ? +options.height : undefined;
+
+    animate_webp(files, options.output, options.verbose, +options.frameDelay, +options.quality, wid, hei);
   });
 
 program.showHelpAfterError()

@@ -40,6 +40,7 @@
     "webp-converter": "^2.3.3"
   },
   "devDependencies": {
+    "@commander-js/extra-typings": "^14.0.0",
     "@types/node": "^24.0.12",
     "jpeg-js": "^0.4.4",
     "jsdoc-to-markdown": "^9.1.1",
