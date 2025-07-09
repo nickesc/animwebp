@@ -1,8 +1,6 @@
 import * as webp from "webp-converter";
 import * as fs from "fs";
 
-webp.grant_permission();
-
 /**
  * Covert a sequence of images to an animated `.webp` file.
  *
@@ -15,7 +13,7 @@ webp.grant_permission();
  * @returns {Promise<string>} a `Promise` that resolves to the path of the animated webp file
  */
 export async function animate_webp(input: string[], output: string, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number): Promise<string>{
-
+    webp.grant_permission();
     console.log(`input files:`,input)
     console.log(`frame delay: ${frameDelay}, width: ${width}, height: ${height}, quality: ${quality}`)
     //console.log(`output: ${output}\n\n${"—".repeat(process.stdout.columns)}\n`)
