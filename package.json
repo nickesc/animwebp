@@ -1,7 +1,7 @@
 {
   "name": "animwebp",
   "version": "0.0.1",
-  "description": "",
+  "description": "Convert a sequence of images to an animated WebP.",
   "homepage": "https://github.com/nickesc/animwebp#readme",
   "bugs": {
     "url": "https://github.com/nickesc/animwebp/issues"
