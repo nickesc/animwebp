@@ -1,0 +1,20 @@
+{
+  "name": "awebp",
+  "version": "0.0.1",
+  "description": "",
+  "license": "MIT",
+  "author": "N. Escobar <nick@nescobar.media> (https://nickesc.github.io/)",
+  "type": "module",
+  "main": "awebp.js",
+  "scripts": {
+    "test": "npm run awebp -- --help",
+    "awebp": "node awebp.js"
+  },
+  "bin":{
+    "awebp":"./awebp.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.0",
+    "webp-converter": "^2.3.3"
+  }
+}
