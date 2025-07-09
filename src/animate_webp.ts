@@ -36,8 +36,11 @@ class QConsole {
  * ```ts
  * import { animate_webp } from 'animwebp';
  * let out = `anim.webp`
- * let imgs = ['1.jpg', '2.png']
- * animate_webp(imgs,out)
+ * let imgs = ['1.jpg', '2.png', '3.png', '4.png', '5.png']
+ *
+ * // generate a webp with logging on, 2000ms frame delay,
+ * // a height of 1024 pixels and an automatic width
+ * animate_webp(imgs, out, true, 2000, undefined, 1024)
  * ```
  *
  * @module animwebp
@@ -47,13 +50,21 @@ class QConsole {
  * Convert a sequence of images to an animated `.webp` file.
  *
  * @param {string[]} input - list of paths to image files
- * @param {string} output - output path to the new animated webp file
- * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print
+ * @param {string} output - output path for the animated webp file
+ * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false `, logs will not print
  * @param {number} [frameDelay=1000] - delay between frames, in milliseconds (default: 1000)
- * @param {number} [quality=100] - quality level, higher values result in better quality; 0-100 (default: 100)
- * @param {number|undefined} [width] - frame width of the animated webp
- * @param {number|undefined} [height] - frame height of the animated webp
+ * @param {number} [quality=100] - quality level, quality level, lower values result in more compression; 0-100 (default: 100)
+ * @param {number|undefined} [width] - frame width; if only `width` is set, `height` scales proportionally
+ * @param {number|undefined} [height] - frame height; if only `height` is set, `width` scales proportionally
  * @returns {Promise<string>} a `Promise` that resolves to the path of the animated webp file
+ *
+ * @example
+ * ```ts
+ * import { animate_webp } from 'animwebp';
+ * let out = `anim.webp`
+ * let imgs = ['1.jpg', '2.png']
+ * animate_webp(imgs,out)
+ * ```
  */
 export async function animate_webp(input: string[], output: string, logging?: boolean, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number): Promise<string>{
     webp.grant_permission();

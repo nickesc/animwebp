@@ -60,10 +60,12 @@ Options:
 ANIMATION
   -f, --frame-delay <number>  delay between frames, in milliseconds (default:
                               "1000")
-  -q, --quality <number>      quality level, higher values result in better
-                              quality; 0-100 (default: "100")
-  -w, --width <number>        frame width of the animated webp
-  -h, --height <number>       frame height of the animated webp
+  -q, --quality <number>      quality level, lower values result in more
+                              compression; 0-100 (default: "100")
+  -w, --width <number>        frame width; if only width is set, height scales
+                              proportionally
+  -h, --height <number>       frame height; if only height is set, width scales
+                              proportionally
 
 LOGGING
   -v, --verbose               print logs to stdout
@@ -87,8 +89,11 @@ Library and command-line tool for converting lists of images to animated WebP fi
 ```ts
 import { animate_webp } from 'animwebp';
 let out = `anim.webp`
-let imgs = ['1.jpg', '2.png']
-animate_webp(imgs,out)
+let imgs = ['1.jpg', '2.png', '3.png', '4.png', '5.png']
+
+// generate a webp with logging on, 2000ms frame delay,
+// a height of 1024 pixels and an automatic width
+animate_webp(imgs, out, true, 2000, undefined, 1024)
 ```
 <a name="module_animwebp.animate_webp"></a>
 
@@ -105,9 +110,16 @@ Convert a sequence of images to an animated `.webp` file.
 | [logging] | <code>boolean</code> \| <code>undefined</code> |  | whether to print logs to stdout; if `undefined` or`false`, logs will not print |
 | [frameDelay] | <code>number</code> | <code>1000</code> | delay between frames, in milliseconds (default: 1000) |
 | [quality] | <code>number</code> | <code>100</code> | quality level, higher values result in better quality; 0-100 (default: 100) |
-| [width] | <code>number</code> \| <code>undefined</code> |  | frame width of the animated webp |
-| [height] | <code>number</code> \| <code>undefined</code> |  | frame height of the animated webp |
+| [width] | <code>number</code> \| <code>undefined</code> |  | frame width; if only `width` is set, `height` scales proportionally |
+| [height] | <code>number</code> \| <code>undefined</code> |  | frame height; if only `height` is set, `width` scales proportionally |
 
+**Example**  
+```ts
+import { animate_webp } from 'animwebp';
+let out = `anim.webp`
+let imgs = ['1.jpg', '2.png']
+animate_webp(imgs,out)
+```
 <!--- REFERENCE END --->
 
 ## License
