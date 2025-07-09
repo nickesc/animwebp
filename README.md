@@ -18,27 +18,30 @@
 
 <br>
 
+# About
+
+<!--- ABOUT BEGIN --->
+
+Convert a sequence of images to an animated WebP.
+<!--- ABOUT END --->
+
 ## Install
 
 <!--- INSTALL BEGIN --->
-
 Install `animwebp` via `npm`:
 
-``` sh
-npm i animwebp
+```sh
+npm install animwebp
 ```
-
 <!--- INSTALL END --->
 
 ## CLI Usage
 
 <!--- CLI BEGIN --->
-
-
-``` txt
+```txt
 Usage: animwebp [options] <files...>
 
-Convert a sequence of images to an animated WebP
+Convert a sequence of images to an animated WebP.
 
 Arguments:
   files                       list of paths to image files (ex.: use *.png to
@@ -104,7 +107,5 @@ Convert a sequence of images to an animated `.webp` file.
 ## License
 
 <!--- LICENSE BEGIN --->
-
 `animwebp` is released under the **MIT** license. For more information, see the repository's [LICENSE](/LICENSE) file.
-
 <!--- LICENSE END --->
