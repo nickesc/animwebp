@@ -41,21 +41,27 @@ Usage: animwebp [options] <files...>
 Convert a sequence of images to an animated WebP
 
 Arguments:
-  files                       a list of paths to image files (ex.: use *.png to
+  files                       list of paths to image files (ex.: use *.png to
                               select all png files in a directory)
 
 Options:
   -o, --output <path>         required; output path to the new animated webp
                               file
+
+ANIMATION
   -f, --frame-delay <number>  delay between frames, in milliseconds (default:
                               "1000")
   -q, --quality <number>      quality level, higher values result in better
                               quality; 0-100 (default: "100")
   -w, --width <number>        frame width of the animated webp
   -h, --height <number>       frame height of the animated webp
+
+LOGGING
   -v, --verbose               print logs to stdout
+
+INFORMATION
   -V, --version               output the version number
-  --help                      display help for command
+  --help                      display help for animwebp
 ```
 
 <!--- CLI END --->
@@ -85,7 +91,7 @@ Convert a sequence of images to an animated `.webp` file.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| input | <code>Array.&lt;string&gt;</code> |  | a list of paths to image files |
+| input | <code>Array.&lt;string&gt;</code> |  | list of paths to image files |
 | output | <code>string</code> |  | output path to the new animated webp file |
 | [logging] | <code>boolean</code> \| <code>undefined</code> |  | whether to print logs to stdout; if `undefined` or`false`, logs will not print |
 | [frameDelay] | <code>number</code> | <code>1000</code> | delay between frames, in milliseconds (default: 1000) |
