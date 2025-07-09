@@ -3,3 +3,5 @@ build/
 src/version.ts
 
 tests/test/
+
+src/lib.ts

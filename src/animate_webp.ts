@@ -1,5 +1,9 @@
 import * as webp from "webp-converter";
 import * as fs from "fs";
+import { LIB_NAME } from './lib.ts';
+import * as os  from 'os';
+import * as path  from 'path';
+
 class QConsole {
 
     private _on: boolean;
@@ -40,12 +44,18 @@ class QConsole {
 export async function animate_webp(input: string[], output: string, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number, logging?: boolean): Promise<string>{
     webp.grant_permission();
     const qconsole = new QConsole(logging);
-    console.log(`frame delay: ${frameDelay}, width: ${width}, height: ${height}, quality: ${quality}`)
-    //console.log(`output: ${output}\n\n${"—".repeat(process.stdout.columns)}\n`)
-    console.log(`output: ${output}\n`)
-    console.log(`generating ${input.length} frames...`)
+
+    let tmpDir;
+    try {
+        tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), LIB_NAME))
+    }
+    catch (e) {
+        throw e;
+    }
+
     qconsole.log(`input files:`,input)
     qconsole.log(`frame delay: ${frameDelay}, width: ${width}, height: ${height}, quality: ${quality}`)
+    //qconsole.log(`output: ${output}\n\n${"—".repeat(process.stdout.columns)}\n`)
     qconsole.log(`output: ${output}\n`)
     qconsole.log(`generating ${input.length} frames...`)
 
@@ -54,7 +64,7 @@ export async function animate_webp(input: string[], output: string, frameDelay: 
         resize = `-resize ${height || 0} ${width || 0}`
     }
 
-    var dir: string = './frames';
+    const dir: string = tmpDir;
 
     let imgs: object[] = []
 
@@ -88,6 +98,15 @@ export async function animate_webp(input: string[], output: string, frameDelay: 
 
     const animation: Promise<any> = webp.webpmux_animate(imgs, output, 0, "255,255,255,0","")
     await animation.then((response) => {qconsole.log(response);});
+
+    try {
+        if (tmpDir) {
+            fs.rmSync(tmpDir, { recursive: true });
+        }
+    }
+    catch (e) {
+        throw new Error(`An error has occurred while removing the temp folder at ${tmpDir}. Please remove it manually. Error: ${e}`);
+    }
 
     if (fs.existsSync(output)){
         qconsole.log(`successfully created animated ${output} file`)
