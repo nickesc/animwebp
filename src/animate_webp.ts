@@ -34,14 +34,14 @@ class QConsole {
  *
  * @param {string[]} input - a list of paths to image files
  * @param {string} output - output path to the new animated webp file
+ * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print (default: undefined)
  * @param {number} [frameDelay=1000] - delay between frames, in milliseconds (default: 1000)
  * @param {number} [quality=100] - quality level, higher values result in better quality; 0-100 (default: 100)
  * @param {number|undefined} [width] - frame width of the animated webp
  * @param {number|undefined} [height] - frame height of the animated webp
- * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print (default: undefined)
  * @returns {Promise<string>} a `Promise` that resolves to the path of the animated webp file
  */
-export async function animate_webp(input: string[], output: string, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number, logging?: boolean): Promise<string>{
+export async function animate_webp(input: string[], output: string, logging?: boolean, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number): Promise<string>{
     webp.grant_permission();
     const qconsole = new QConsole(logging);
 

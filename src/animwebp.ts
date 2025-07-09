@@ -18,7 +18,7 @@ program
   .option("-v, --verbose", "print logs to stdout")
   .version(LIB_VERSION)
   .action((files, options) => {
-    animate_webp(files, options.output, options.frameDelay, options.quality, options.width, options.height, options.verbose);
+    animate_webp(files, options.output, options.verbose, options.frameDelay, options.quality, options.width, options.height);
   });
 
 program.parse();
