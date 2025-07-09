@@ -1,14 +1,14 @@
 #!/usr/bin/env NODE_OPTIONS=--no-warnings node
 
 import { Command } from '@commander-js/extra-typings';
-import { LIB_VERSION, LIB_NAME } from './lib.ts';
+import { LIB_VERSION, LIB_NAME, LIB_DESCRIPTION } from './lib.ts';
 import { animate_webp } from './animate_webp.ts';
 
 const program: Command = new Command();
 
 program
   .name(LIB_NAME)
-  .description("Convert a sequence of images to an animated WebP")
+  .description(LIB_DESCRIPTION)
   .summary("create animated webp")
   .argument("<files...>", "list of paths to image files (ex.: use *.png to select all png files in a directory)")
   .optionsGroup("Options:")
@@ -30,5 +30,4 @@ program
     animate_webp(files, options.output, options.verbose, +options.frameDelay, +options.quality, wid, hei);
   });
 
-program.showHelpAfterError()
 program.parse();
