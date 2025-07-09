@@ -38,7 +38,7 @@ describe('animwebp', () => {
 
         let list = [generate_image(`${dir}/1`), generate_image(`${dir}/1`)]
         await sleep(1000)
-        animate_webp(list,out)
+        animate_webp(list,out, true)
         await sleep(4000)
         expect(fs.existsSync(out)).toBe(true);
     });
