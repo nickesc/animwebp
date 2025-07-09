@@ -46,7 +46,7 @@ class QConsole {
 /**
  * Convert a sequence of images to an animated `.webp` file.
  *
- * @param {string[]} input - a list of paths to image files
+ * @param {string[]} input - list of paths to image files
  * @param {string} output - output path to the new animated webp file
  * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print
  * @param {number} [frameDelay=1000] - delay between frames, in milliseconds (default: 1000)
