@@ -13,15 +13,22 @@
   "license": "MIT",
   "author": "N. Escobar <nick@nescobar.media> (https://nickesc.github.io/)",
   "type": "module",
-  "main": "awebp.ts",
+  "main": "src/awebp.ts",
   "scripts": {
+    "prebuild": "node -p \"'export const LIB_VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "test": "npm run awebp -- --help",
     "build": "npx tsc",
-    "awebp": "node awebp.ts"
+    "awebp": "node src/awebp.ts"
   },
   "bin": {
     "awebp": "./build/awebp.js"
   },
+  "files": [
+    "build/**/*",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "@types/node": "^24.0.12",
     "commander": "^14.0.0",
