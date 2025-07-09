@@ -6,7 +6,7 @@ import { program } from 'commander';
 import pkgjson from '../package.json' with { type: "json" };
 import { writeFileSync } from 'fs';
 
-function generate_lib(){
+function generate_lib() {
     const lib_string =
 `export const LIB_VERSION = ${JSON.stringify(pkgjson.version)};
 export const LIB_NAME = ${JSON.stringify(pkgjson.name)};
