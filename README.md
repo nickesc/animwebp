@@ -28,10 +28,16 @@ Convert a sequence of images to an animated WebP.
 ## Install
 
 <!--- INSTALL BEGIN --->
-Install `animwebp` via `npm`:
+Install `animwebp` via `npm`.
 
+To install `animwebp` as a library in a JavaScript or TypeScript project:
 ```sh
 npm install animwebp
+```
+
+To install `animwebp` globally, for use as a CLI tool:
+```sh
+npm install -g animwebp
 ```
 <!--- INSTALL END --->
 

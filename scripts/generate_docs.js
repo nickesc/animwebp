@@ -6,10 +6,16 @@ import pkgjson from '../package.json' with { type: "json" };
 
 function generate_install(){
     console.log(
-`Install \`${pkgjson.name}\` via \`npm\`:
+`Install \`${pkgjson.name}\` via \`npm\`.
 
+To install \`${pkgjson.name}\` as a library in a JavaScript or TypeScript project:
 \`\`\`sh
 npm install ${pkgjson.name}
+\`\`\`
+
+To install \`${pkgjson.name}\` globally, for use as a CLI tool:
+\`\`\`sh
+npm install -g ${pkgjson.name}
 \`\`\``
     );
 }
