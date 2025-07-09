@@ -1,13 +1,13 @@
 #!/usr/bin/env NODE_OPTIONS=--no-warnings node
 
 import { Command } from 'commander';
-import { LIB_VERSION } from './lib.ts';
+import { LIB_VERSION, LIB_NAME } from './lib.ts';
 import { animate_webp } from './animate_webp.ts';
 
 const program: Command = new Command();
 
 program
-  .name("animwebp")
+  .name(LIB_NAME)
   .description("Convert a sequence of images to an animated WebP")
   .argument("<files...>", "a list of paths to image files (ex.: use *.png to select all png files in a directory)")
   .requiredOption("-o, --output <path>", "required; output path to the new animated webp file")
