@@ -1,5 +1,29 @@
 import * as webp from "webp-converter";
 import * as fs from "fs";
+class QConsole {
+
+    private _on: boolean;
+
+    constructor(on?: boolean) {
+        this._on = on || false;
+    }
+
+    log(message?: any, ...optionalParams: any[]): void {
+        if (this._on) {
+            console.log(message, ...optionalParams)
+        }
+    }
+    warn(message?: any, ...optionalParams: any[]): void {
+        if (this._on) {
+            console.warn(message, ...optionalParams)
+        }
+    }
+    error(message?: any, ...optionalParams: any[]): void {
+        if (this._on) {
+            console.error(message, ...optionalParams)
+        }
+    }
+}
 
 /**
  * Covert a sequence of images to an animated `.webp` file.
@@ -10,15 +34,20 @@ import * as fs from "fs";
  * @param {number} [quality=100] - quality level, higher values result in better quality; 0-100 (default: 100)
  * @param {number|undefined} [width] - frame width of the animated webp
  * @param {number|undefined} [height] - frame height of the animated webp
+ * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print (default: undefined)
  * @returns {Promise<string>} a `Promise` that resolves to the path of the animated webp file
  */
-export async function animate_webp(input: string[], output: string, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number): Promise<string>{
+export async function animate_webp(input: string[], output: string, frameDelay: number = 1000, quality: number = 100, width?: number, height?: number, logging?: boolean): Promise<string>{
     webp.grant_permission();
-    console.log(`input files:`,input)
+    const qconsole = new QConsole(logging);
     console.log(`frame delay: ${frameDelay}, width: ${width}, height: ${height}, quality: ${quality}`)
     //console.log(`output: ${output}\n\n${"—".repeat(process.stdout.columns)}\n`)
     console.log(`output: ${output}\n`)
     console.log(`generating ${input.length} frames...`)
+    qconsole.log(`input files:`,input)
+    qconsole.log(`frame delay: ${frameDelay}, width: ${width}, height: ${height}, quality: ${quality}`)
+    qconsole.log(`output: ${output}\n`)
+    qconsole.log(`generating ${input.length} frames...`)
 
     let resize: string = "";
     if (width || height) {
@@ -54,14 +83,14 @@ export async function animate_webp(input: string[], output: string, frameDelay: 
         }
     }
 
-    console.log("temp frames:", imgs)
-    console.log(`\ncreating animation...`)
+    qconsole.log("temp frames:", imgs)
+    qconsole.log(`\ncreating animation...`)
 
     const animation: Promise<any> = webp.webpmux_animate(imgs, output, 0, "255,255,255,0","")
-    await animation.then((response) => {console.log(response);});
+    await animation.then((response) => {qconsole.log(response);});
 
     if (fs.existsSync(output)){
-        console.log(`successfully created animated ${output} file`)
+        qconsole.log(`successfully created animated ${output} file`)
         return output;
     } else {
         throw new Error(`failed to create animated ${output} file`)
