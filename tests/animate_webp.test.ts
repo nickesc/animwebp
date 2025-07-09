@@ -29,7 +29,7 @@ function generate_image(output: string = "img", width: number = 100, height: num
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 describe('animwebp', () => {
-    it('should construct', async () => {
+    it('should generate an animated webp file from two jpeg files', async () => {
         let dir = "./tests/test"
         let out = `${dir}/anim.webp`
         if (!fs.existsSync(dir)){
