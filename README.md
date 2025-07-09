@@ -54,8 +54,7 @@ Arguments:
                               select all png files in a directory)
 
 Options:
-  -o, --output <path>         required; output path to the new animated webp
-                              file
+  -o, --output <path>         required; output path for the animated webp file
 
 ANIMATION
   -f, --frame-delay <number>  delay between frames, in milliseconds (default:
@@ -106,10 +105,10 @@ Convert a sequence of images to an animated `.webp` file.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | input | <code>Array.&lt;string&gt;</code> |  | list of paths to image files |
-| output | <code>string</code> |  | output path to the new animated webp file |
-| [logging] | <code>boolean</code> \| <code>undefined</code> |  | whether to print logs to stdout; if `undefined` or`false`, logs will not print |
+| output | <code>string</code> |  | output path for the animated webp file |
+| [logging] | <code>boolean</code> \| <code>undefined</code> |  | whether to print logs to stdout; if `undefined` or`false `, logs will not print |
 | [frameDelay] | <code>number</code> | <code>1000</code> | delay between frames, in milliseconds (default: 1000) |
-| [quality] | <code>number</code> | <code>100</code> | quality level, higher values result in better quality; 0-100 (default: 100) |
+| [quality] | <code>number</code> | <code>100</code> | quality level, quality level, lower values result in more compression; 0-100 (default: 100) |
 | [width] | <code>number</code> \| <code>undefined</code> |  | frame width; if only `width` is set, `height` scales proportionally |
 | [height] | <code>number</code> \| <code>undefined</code> |  | frame height; if only `height` is set, `width` scales proportionally |
 
