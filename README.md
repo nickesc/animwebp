@@ -18,20 +18,39 @@
 
 <br>
 
-```txt
+## Install
+
+<!--- INSTALL BEGIN --->
+
+Install `animwebp` via NPM:
+
+``` sh
+ npm i animwebp
+```
+
+<!--- INSTALL END --->
+
+## CLI Usage
+
+<!--- CLI BEGIN --->
+
+
+``` txt
 Usage: animwebp [options] <files...>
 
 Convert a sequence of images to an animated WebP
 
 Arguments:
-  files                       a list of paths to image files (ex.: use *.png to select 
-                              all png files in a directory)
+  files                       a list of paths to image files (ex.: use *.png to
+                              select all png files in a directory)
 
 Options:
-  -o, --output <path>         required; output path to the new animated webp file
-  -f, --frame-delay <number>  delay between frames, in milliseconds (default: "1000")
-  -q, --quality <number>      quality level, higher values result in better quality; 
-                              0-100 (default: "100")
+  -o, --output <path>         required; output path to the new animated webp
+                              file
+  -f, --frame-delay <number>  delay between frames, in milliseconds (default:
+                              "1000")
+  -q, --quality <number>      quality level, higher values result in better
+                              quality; 0-100 (default: "100")
   -w, --width <number>        frame width of the animated webp
   -h, --height <number>       frame height of the animated webp
   -v, --verbose               print logs to stdout
@@ -39,6 +58,46 @@ Options:
   --help                      display help for command
 ```
 
+<!--- CLI END --->
+
+## Reference
+
+<!--- REFERENCE BEGIN --->
+<a name="module_animwebp"></a>
+
+## animwebp
+Library and command-line tool for converting lists of images to animated WebP files.
+
+**Example**  
+```ts
+import { animate_webp } from 'animwebp';
+let out = `anim.webp`
+let imgs = ['1.jpg', '2.png']
+animate_webp(imgs,out)
+```
+<a name="module_animwebp.animate_webp"></a>
+
+### animwebp.animate\_webp(input, output, [logging], [frameDelay], [quality], [width], [height]) ⇒ <code>Promise.&lt;string&gt;</code>
+Convert a sequence of images to an animated `.webp` file.
+
+**Kind**: static method of [<code>animwebp</code>](#module_animwebp)  
+**Returns**: <code>Promise.&lt;string&gt;</code> - a `Promise` that resolves to the path of the animated webp file  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>Array.&lt;string&gt;</code> |  | a list of paths to image files |
+| output | <code>string</code> |  | output path to the new animated webp file |
+| [logging] | <code>boolean</code> \| <code>undefined</code> |  | whether to print logs to stdout; if `undefined` or`false`, logs will not print |
+| [frameDelay] | <code>number</code> | <code>1000</code> | delay between frames, in milliseconds (default: 1000) |
+| [quality] | <code>number</code> | <code>100</code> | quality level, higher values result in better quality; 0-100 (default: 100) |
+| [width] | <code>number</code> \| <code>undefined</code> |  | frame width of the animated webp |
+| [height] | <code>number</code> \| <code>undefined</code> |  | frame height of the animated webp |
+
+<!--- REFERENCE END --->
+
 ## License
 
+<!--- LICENSE BEGIN --->
+
 `animwebp` is released under the **MIT** license. For more information, see the repository's [LICENSE](/LICENSE) file.
+<!--- LICENSE END --->

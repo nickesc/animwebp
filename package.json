@@ -18,7 +18,13 @@
     "prebuild": "node -p \"'export const LIB_VERSION = ' + JSON.stringify(require('./package.json').version) + '; export const LIB_NAME = ' + JSON.stringify(require('./package.json').name) + ';'\" > src/lib.ts",
     "test": "npm run prebuild; vitest run",
     "build": "npx tsc",
-    "animwebp": "node src/animwebp.ts"
+    "animwebp": "node src/animwebp.ts",
+    "docs:install": "cb='```';echo \"Install \\`$npm_package_name\\` via NPM:\n\n$cb sh\n npm i $npm_package_name\n$cb\n\" | replace-between --target README.md --token INSTALL",
+    "docs:cli": "cb='```';echo \"$cb txt\n$(animwebp --help)\n$cb\n\" | replace-between --target README.md --token CLI",
+    "docs:reference": "jsdoc2md build/animate_webp.js | replace-between --target README.md --token REFERENCE",
+    "docs:license": "echo \"\\`$npm_package_name\\` is released under the **$(cat package.json | json license)** license. For more information, see the repository's [LICENSE](/LICENSE) file.\" | replace-between --target README.md --token LICENSE",
+    "docs": "npm run docs:install && npm run docs:cli && npm run docs:reference && npm run docs:license",
+    "build:docs": "npm run build && npm run docs"
   },
   "bin": {
     "animwebp": "./build/animwebp.js"
@@ -36,6 +42,9 @@
   "devDependencies": {
     "@types/node": "^24.0.12",
     "jpeg-js": "^0.4.4",
+    "jsdoc-to-markdown": "^9.1.1",
+    "json": "^11.0.0",
+    "replace-between": "^0.0.8",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }

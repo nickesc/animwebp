@@ -30,11 +30,25 @@ class QConsole {
 }
 
 /**
- * Covert a sequence of images to an animated `.webp` file.
+ * @fileoverview Library and command-line tool for converting lists of images to animated WebP files.
+ *
+ * @example
+ * ```ts
+ * import { animate_webp } from 'animwebp';
+ * let out = `anim.webp`
+ * let imgs = ['1.jpg', '2.png']
+ * animate_webp(imgs,out)
+ * ```
+ *
+ * @module animwebp
+ */
+
+/**
+ * Convert a sequence of images to an animated `.webp` file.
  *
  * @param {string[]} input - a list of paths to image files
  * @param {string} output - output path to the new animated webp file
- * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print (default: undefined)
+ * @param {boolean|undefined} [logging] - whether to print logs to stdout; if `undefined` or`false`, logs will not print
  * @param {number} [frameDelay=1000] - delay between frames, in milliseconds (default: 1000)
  * @param {number} [quality=100] - quality level, higher values result in better quality; 0-100 (default: 100)
  * @param {number|undefined} [width] - frame width of the animated webp
