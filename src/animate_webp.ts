@@ -48,6 +48,7 @@ export async function animate_webp(input: string[], output: string, logging?: bo
     let tmpDir;
     try {
         tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), LIB_NAME))
+        qconsole.log(`created temp folder: ${tmpDir}\n`)
     }
     catch (e) {
         throw e;
@@ -102,6 +103,7 @@ export async function animate_webp(input: string[], output: string, logging?: bo
     try {
         if (tmpDir) {
             fs.rmSync(tmpDir, { recursive: true });
+            qconsole.log(`deleted temp folder: ${tmpDir}\n`)
         }
     }
     catch (e) {
