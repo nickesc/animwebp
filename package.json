@@ -2,19 +2,30 @@
   "name": "awebp",
   "version": "0.0.1",
   "description": "",
+  "homepage": "https://github.com/nickesc/awebp#readme",
+  "bugs": {
+    "url": "https://github.com/nickesc/awebp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickesc/awebp.git"
+  },
   "license": "MIT",
   "author": "N. Escobar <nick@nescobar.media> (https://nickesc.github.io/)",
   "type": "module",
-  "main": "awebp.js",
+  "main": "awebp.ts",
   "scripts": {
     "test": "npm run awebp -- --help",
-    "awebp": "node awebp.js"
+    "build": "npx tsc",
+    "awebp": "node awebp.ts"
   },
-  "bin":{
-    "awebp":"./awebp.js"
+  "bin": {
+    "awebp": "./build/awebp.js"
   },
   "dependencies": {
+    "@types/node": "^24.0.12",
     "commander": "^14.0.0",
+    "typescript": "^5.8.3",
     "webp-converter": "^2.3.3"
   }
 }
