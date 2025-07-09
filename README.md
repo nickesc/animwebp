@@ -22,10 +22,10 @@
 
 <!--- INSTALL BEGIN --->
 
-Install `animwebp` via NPM:
+Install `animwebp` via `npm`:
 
 ``` sh
- npm i animwebp
+npm i animwebp
 ```
 
 <!--- INSTALL END --->
@@ -100,4 +100,5 @@ Convert a sequence of images to an animated `.webp` file.
 <!--- LICENSE BEGIN --->
 
 `animwebp` is released under the **MIT** license. For more information, see the repository's [LICENSE](/LICENSE) file.
+
 <!--- LICENSE END --->

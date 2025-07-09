@@ -19,10 +19,10 @@
     "test": "npm run prebuild; vitest run",
     "build": "npx tsc",
     "animwebp": "node src/animwebp.ts",
-    "docs:install": "cb='```';echo \"Install \\`$npm_package_name\\` via NPM:\n\n$cb sh\n npm i $npm_package_name\n$cb\n\" | replace-between --target README.md --token INSTALL",
+    "docs:install": "cb='```';echo \"Install \\`$npm_package_name\\` via \\`npm\\`:\n\n$cb sh\nnpm i $npm_package_name\n$cb\n\" | replace-between --target README.md --token INSTALL",
     "docs:cli": "cb='```';echo \"$cb txt\n$(animwebp --help)\n$cb\n\" | replace-between --target README.md --token CLI",
     "docs:reference": "jsdoc2md build/animate_webp.js | replace-between --target README.md --token REFERENCE",
-    "docs:license": "echo \"\\`$npm_package_name\\` is released under the **$(cat package.json | json license)** license. For more information, see the repository's [LICENSE](/LICENSE) file.\" | replace-between --target README.md --token LICENSE",
+    "docs:license": "echo \"\\`$npm_package_name\\` is released under the **$(cat package.json | json license)** license. For more information, see the repository's [LICENSE](/LICENSE) file.\n\" | replace-between --target README.md --token LICENSE",
     "docs": "npm run docs:install && npm run docs:cli && npm run docs:reference && npm run docs:license",
     "build:docs": "npm run build && npm run docs"
   },
