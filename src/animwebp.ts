@@ -24,8 +24,8 @@ program
   .helpOption("--help", `display help for ${LIB_NAME}`)
   .version(LIB_VERSION)
   .action((files, options) => {
-    const wid = options.width ? +options.width : undefined;
-    const hei = options.height ? +options.height : undefined;
+    const wid: number | undefined = options.width ? +options.width : undefined;
+    const hei: number | undefined = options.height ? +options.height : undefined;
 
     animate_webp(files, options.output, options.verbose, +options.frameDelay, +options.quality, wid, hei);
   });
