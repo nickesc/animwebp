@@ -1,5 +1,8 @@
-const { program } = require('commander');
-const pkgjson = require('../package.json');
+//const { program } = require('commander');
+//const pkgjson = require('../package.json');
+
+import { program } from 'commander';
+import pkgjson from '../package.json' with { type: "json" };
 
 function generate_install(){
     console.log(

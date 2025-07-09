@@ -1,8 +1,10 @@
-const { program } = require('commander');
-const fs = require("fs");
-const pkgjson = require('../package.json');
+//const { program } = require('commander');
+//const fs = require("fs");
+//const pkgjson = require('../package.json');
 
-
+import { program } from 'commander';
+import pkgjson from '../package.json' with { type: "json" };
+import { writeFileSync } from 'fs';
 
 function generate_lib(){
     const lib_string =
@@ -10,7 +12,7 @@ function generate_lib(){
 export const LIB_NAME = ${JSON.stringify(pkgjson.name)};
 export const LIB_DESCRIPTION = ${JSON.stringify(pkgjson.description)};
 export const LIB_LICENSE = ${JSON.stringify(pkgjson.license)};`;
-    fs.writeFileSync("src/lib.ts", lib_string)
+    writeFileSync("src/lib.ts", lib_string)
 }
 
 program
