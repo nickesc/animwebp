@@ -30,9 +30,10 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@types/node": "^24.0.12",
     "commander": "^14.0.0",
-    "typescript": "^5.8.3",
     "webp-converter": "^2.3.3"
+  }, "devDependencies": {
+    "@types/node": "^24.0.12",
+    "typescript": "^5.8.3"
   }
 }
