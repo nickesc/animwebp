@@ -13,7 +13,7 @@
   "license": "MIT",
   "author": "N. Escobar <nick@nescobar.media> (https://nickesc.github.io/)",
   "type": "module",
-  "main": "src/animate_webp.ts",
+  "main": "build/animate_webp.js",
   "scripts": {
     "animwebp": "node --no-warnings src/animwebp.ts",
     "prebuild": "node scripts/generate_lib.js",
