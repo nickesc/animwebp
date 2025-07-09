@@ -9,16 +9,23 @@ const program: Command = new Command();
 program
   .name(LIB_NAME)
   .description("Convert a sequence of images to an animated WebP")
-  .argument("<files...>", "a list of paths to image files (ex.: use *.png to select all png files in a directory)")
+  .summary("create animated webp")
+  .argument("<files...>", "list of paths to image files (ex.: use *.png to select all png files in a directory)")
+  .optionsGroup("Options:")
   .requiredOption("-o, --output <path>", "required; output path to the new animated webp file")
+  .optionsGroup("ANIMATION")
   .option("-f, --frame-delay <number>", "delay between frames, in milliseconds", "1000")
   .option("-q, --quality <number>", "quality level, higher values result in better quality; 0-100", "100")
   .option("-w, --width <number>", "frame width of the animated webp")
   .option("-h, --height <number>", "frame height of the animated webp")
+  .optionsGroup("LOGGING")
   .option("-v, --verbose", "print logs to stdout")
+  .optionsGroup("INFORMATION")
+  .helpOption("--help", `display help for ${LIB_NAME}`)
   .version(LIB_VERSION)
   .action((files, options) => {
     animate_webp(files, options.output, options.verbose, options.frameDelay, options.quality, options.width, options.height);
   });
 
+program.showHelpAfterError()
 program.parse();
