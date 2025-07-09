@@ -8,10 +8,10 @@ import { writeFileSync } from 'fs';
 
 function generate_lib() {
     const lib_string =
-`export const LIB_VERSION = ${JSON.stringify(pkgjson.version)};
-export const LIB_NAME = ${JSON.stringify(pkgjson.name)};
-export const LIB_DESCRIPTION = ${JSON.stringify(pkgjson.description)};
-export const LIB_LICENSE = ${JSON.stringify(pkgjson.license)};`;
+`export const LIB_VERSION: string = ${JSON.stringify(pkgjson.version)};
+export const LIB_NAME: string = ${JSON.stringify(pkgjson.name)};
+export const LIB_DESCRIPTION: string = ${JSON.stringify(pkgjson.description)};
+export const LIB_LICENSE: string = ${JSON.stringify(pkgjson.license)};`;
     writeFileSync("src/lib.ts", lib_string)
 }
 
