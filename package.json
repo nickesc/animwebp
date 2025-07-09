@@ -16,7 +16,7 @@
   "main": "src/animate_webp.ts",
   "scripts": {
     "prebuild": "node -p \"'export const LIB_VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
-    "test": "vitest",
+    "test": "vitest run",
     "build": "npx tsc",
     "animwebp": "node src/animwebp.ts"
   },
