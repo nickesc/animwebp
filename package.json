@@ -1,27 +1,27 @@
 {
-  "name": "awebp",
+  "name": "animwebp",
   "version": "0.0.1",
   "description": "",
-  "homepage": "https://github.com/nickesc/awebp#readme",
+  "homepage": "https://github.com/nickesc/animwebp#readme",
   "bugs": {
-    "url": "https://github.com/nickesc/awebp/issues"
+    "url": "https://github.com/nickesc/animwebp/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nickesc/awebp.git"
+    "url": "git+https://github.com/nickesc/animwebp.git"
   },
   "license": "MIT",
   "author": "N. Escobar <nick@nescobar.media> (https://nickesc.github.io/)",
   "type": "module",
-  "main": "src/awebp.ts",
+  "main": "src/animate_webp.ts",
   "scripts": {
     "prebuild": "node -p \"'export const LIB_VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
-    "test": "npm run awebp -- --help",
+    "test": "vitest",
     "build": "npx tsc",
-    "awebp": "node src/awebp.ts"
+    "animwebp": "node src/animwebp.ts"
   },
   "bin": {
-    "awebp": "./build/awebp.js"
+    "animwebp": "./build/animwebp.js"
   },
   "files": [
     "build/**/*",
@@ -32,8 +32,11 @@
   "dependencies": {
     "commander": "^14.0.0",
     "webp-converter": "^2.3.3"
-  }, "devDependencies": {
+  },
+  "devDependencies": {
     "@types/node": "^24.0.12",
-    "typescript": "^5.8.3"
+    "jpeg-js": "^0.4.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   }
 }
