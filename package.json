@@ -1,7 +1,7 @@
 {
   "name": "animwebp",
   "version": "1.0.0",
-  "description": "Convert a sequence of images to an animated WebP.",
+  "description": "Convert a sequence of images to an animated WebP. Supports .png, .jpeg, .tiff and .webp files.",
   "homepage": "https://github.com/nickesc/animwebp#readme",
   "bugs": {
     "url": "https://github.com/nickesc/animwebp/issues"
@@ -22,7 +22,7 @@
     "test": "vitest run",
     "docs:about": "node --no-warnings scripts/generate_docs.js about | replace-between --target README.md --token ABOUT",
     "docs:install": "node --no-warnings scripts/generate_docs.js install | replace-between --target README.md --token INSTALL",
-    "docs:cli": "echo \"\\`\\`\\`txt\n$(node --no-warnings src/animwebp.ts --help)\n\\`\\`\\`\n\" | replace-between --target README.md --token CLI",
+    "docs:cli": "echo \"\\`\\`\\`txt\n$(node --no-warnings src/animwebp.ts --help)\n\\`\\`\\`\" | replace-between --target README.md --token CLI",
     "docs:reference": "jsdoc2md build/animate_webp.js | replace-between --target README.md --token REFERENCE",
     "docs:license": "node --no-warnings scripts/generate_docs.js license | replace-between --target README.md --token LICENSE",
     "docs": "npm run docs:about && npm run docs:install && npm run docs:cli && npm run docs:reference && npm run docs:license",

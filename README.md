@@ -15,14 +15,12 @@
     <!-- tagline -->
   </h6>
 </h3>
-
 <br>
 
-# About
+## About
 
 <!--- ABOUT BEGIN --->
-
-Convert a sequence of images to an animated WebP.
+Convert a sequence of images to an animated WebP. Supports .png, .jpeg, .tiff and .webp files.
 <!--- ABOUT END --->
 
 ## Install
@@ -73,7 +71,6 @@ INFORMATION
   -V, --version               output the version number
   --help                      display help for animwebp
 ```
-
 <!--- CLI END --->
 
 ## Reference
