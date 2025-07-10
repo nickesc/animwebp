@@ -29,7 +29,7 @@
     "build:docs": "npm run build && npm run docs"
   },
   "bin": {
-    "animwebp": "./build/animwebp.js"
+    "animwebp": "build/animwebp.js"
   },
   "files": [
     "build/**/*",
