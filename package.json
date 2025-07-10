@@ -39,10 +39,10 @@
   ],
   "dependencies": {
     "commander": "^14.0.0",
-    "webp-converter": "^2.3.3"
+    "webp-converter": "^2.3.3",
+    "@commander-js/extra-typings": "^14.0.0"
   },
   "devDependencies": {
-    "@commander-js/extra-typings": "^14.0.0",
     "@types/node": "^24.0.12",
     "jpeg-js": "^0.4.4",
     "jsdoc-to-markdown": "^9.1.1",
