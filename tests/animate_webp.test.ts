@@ -1,15 +1,17 @@
 import { animate_webp } from '../src/animate_webp';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import * as jpeg from "jpeg-js";
 import * as fs from "fs";
 
-function generate_image(output: string = "img", width: number = 100, height: number = 100): string {
-    let frameData = new Buffer(width * height * 4);
+type Color = { r: number; g: number; b: number };
+
+function generate_image(output: string = "img", width: number = 100, height: number = 100, color: Color = { r: 0, g: 0, b: 0 }): string {
+    let frameData = Buffer.alloc(width * height * 4);
     let i = 0;
     while (i < frameData.length) {
-        frameData[i++] = 0x00; // red
-        frameData[i++] = 0x00; // green
-        frameData[i++] = 0x00; // blue
+        frameData[i++] = color.r; // red
+        frameData[i++] = color.g; // green
+        frameData[i++] = color.b; // blue
         frameData[i++] = 0xff; // alpha - ignored in JPEGs
     }
     const rawImageData = {
