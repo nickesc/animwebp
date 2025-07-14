@@ -55,4 +55,13 @@ describe('animwebp', () => {
         }
         await expect(animate_webp([], out, true)).rejects.toThrow();
     });
+
+    it('should throw an error for non-existent input files', async () => {
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
+        }
+        let list = ["nonexistent1.jpg", "nonexistent2.jpg"];
+        await expect(animate_webp(list, out, true)).rejects.toThrow('nonexistent1.jpg does not exist');
+    });
 }, 0);
