@@ -47,4 +47,12 @@ describe('animwebp', () => {
         await animate_webp(list, out, true)
         expect(fs.existsSync(out)).toBe(true);
     });
+
+    it('should throw an error for empty input array', async () => {
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
+        }
+        await expect(animate_webp([], out, true)).rejects.toThrow();
+    });
 }, 0);
