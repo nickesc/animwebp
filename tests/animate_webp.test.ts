@@ -64,4 +64,18 @@ describe('animwebp', () => {
         let list = ["nonexistent1.jpg", "nonexistent2.jpg"];
         await expect(animate_webp(list, out, true)).rejects.toThrow('nonexistent1.jpg does not exist');
     });
+
+    it('should handle images with different dimensions by resizing', async () => {
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
+        }
+
+        let list = [
+            generate_image(`${testDir}/1`, 100, 100, {r: 255, g: 0, b: 0}),
+            generate_image(`${testDir}/2`, 200, 150, {r: 0, g: 255, b: 0})
+        ];
+        await animate_webp(list, out, true, 1000, 100, 120, 120);
+        expect(fs.existsSync(out)).toBe(true);
+    });
 }, 0);
