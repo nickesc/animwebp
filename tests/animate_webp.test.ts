@@ -26,22 +26,56 @@ function generate_image(output: string = "img", width: number = 100, height: num
     return filepath;
 }
 
-
+const testDir = "./tests/test";
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 describe('animwebp', () => {
+    afterEach(() => {
+        if (fs.existsSync(testDir)) {
+            //fs.rmSync(testDir, { recursive: true, force: true });
+        }
+    });
+
     it('should generate an animated webp file from two jpeg files', async () => {
-        let dir = "./tests/test"
-        let out = `${dir}/anim.webp`
-        if (!fs.existsSync(dir)){
-            fs.mkdirSync(dir);
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
         }
 
-        let list = [generate_image(`${dir}/1`), generate_image(`${dir}/1`)]
-        await sleep(1000)
-        animate_webp(list,out, true)
-        await sleep(4000)
+        let list = [generate_image(`${testDir}/1`, 100, 100, {r: 0, g: 255, b: 0}), generate_image(`${testDir}/2`, 100, 100, {r: 255, g: 0, b: 255})]
+        await animate_webp(list, out, true)
+        expect(fs.existsSync(out)).toBe(true);
+    });
+
+    it('should throw an error for empty input array', async () => {
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
+        }
+        await expect(animate_webp([], out, true)).rejects.toThrow();
+    });
+
+    it('should throw an error for non-existent input files', async () => {
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
+        }
+        let list = ["nonexistent1.jpg", "nonexistent2.jpg"];
+        await expect(animate_webp(list, out, true)).rejects.toThrow('nonexistent1.jpg does not exist');
+    });
+
+    it('should handle images with different dimensions by resizing', async () => {
+        let out = `${testDir}/anim.webp`
+        if (!fs.existsSync(testDir)){
+            fs.mkdirSync(testDir, { recursive: true });
+        }
+
+        let list = [
+            generate_image(`${testDir}/1`, 100, 100, {r: 255, g: 0, b: 0}),
+            generate_image(`${testDir}/2`, 200, 150, {r: 0, g: 255, b: 0})
+        ];
+        await animate_webp(list, out, true, 1000, 100, 120, 120);
         expect(fs.existsSync(out)).toBe(true);
     });
 }, 0);
