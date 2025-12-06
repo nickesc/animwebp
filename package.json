@@ -1,6 +1,6 @@
 {
   "name": "animwebp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert a sequence of images to an animated WebP. Supports .png, .jpeg, .tiff and .webp files.",
   "keywords": ["webp","animated webp","animation","gif","images","jpeg","png","cli","tool","converter","javascript", "typescript"],
   "homepage": "https://github.com/nickesc/animwebp#readme",
