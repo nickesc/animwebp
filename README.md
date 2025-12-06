@@ -45,7 +45,8 @@ npm install -g animwebp
 ```txt
 Usage: animwebp [options] <files...>
 
-Convert a sequence of images to an animated WebP.
+Convert a sequence of images to an animated WebP. Supports .png, .jpeg, .tiff
+and .webp files.
 
 Arguments:
   files                       list of paths to image files (ex.: use *.png to
